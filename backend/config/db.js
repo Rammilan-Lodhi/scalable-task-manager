@@ -1,13 +1,22 @@
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const uri =
-    process.env.MONGO_URI ||
-    'mongodb://admin:root@127.0.0.1:27017/TaskManager?authSource=admin';
+  try {
+    const uri = process.env.MONGO_URI;
 
-  mongoose.set('strictQuery', true);
-  await mongoose.connect(uri);
-  console.log(`[db] Connected to MongoDB at ${uri.split('@')[1] || uri}`);
+    if (!uri) {
+      throw new Error('MONGO_URI not found in .env');
+    }
+
+    mongoose.set('strictQuery', true);
+
+    await mongoose.connect(uri);
+
+    console.log('[db] MongoDB Connected (Atlas)');
+  } catch (error) {
+    console.error('[db] Connection Error:', error.message);
+    process.exit(1);
+  }
 };
 
 module.exports = connectDB;
