@@ -2,6 +2,11 @@
 
 A full-stack MERN task manager with JWT authentication and role-based access control (user / admin).
 
+## 🌐 Live Demo
+
+Frontend: https://scalable-task-manager-amber.vercel.app  
+Backend: https://scalable-task-manager.onrender.com
+
 ## Tech Stack
 
 **Backend:** Node.js, Express, MongoDB, Mongoose, JWT, bcrypt, dotenv, cors, nodemon
